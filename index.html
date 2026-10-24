@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Familiereis Namibië 2028: route, programma, lodges, voertuigen en kostenbeeld.">
+<style>html{color-scheme:dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Namibië 2028</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: a vertical deck of full-height slides (scroll-snap), each a frame with an eyebrow, a title and a text/photo split; dark-first, the night sky of the NamibRand dark-sky reserve with dune ochre as the accent. */
+:root{
+  --bg:#141a22; --bg-2:#1b222c; --panel:#222b36; --line:#33404d;
+  --fg:#ece4d6; --muted:#a6afba; --accent:#d9913f; --accent-2:#8fb3c4; --ok:#7fb587;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'Figtree','Helvetica Neue',Arial,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f3eee5; --bg-2:#e9e2d5; --panel:#fbf8f2; --line:#d6ccbb;
+    --fg:#1f2229; --muted:#5c6069; --accent:#b4651c; --accent-2:#3f6c80; --ok:#3f7a4a;
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f3eee5; --bg-2:#e9e2d5; --panel:#fbf8f2; --line:#d6ccbb;
+  --fg:#1f2229; --muted:#5c6069; --accent:#b4651c; --accent-2:#3f6c80; --ok:#3f7a4a;
+  color-scheme:light;
+}
+html{scroll-snap-type:y proximity;scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.5;margin:0}
+*{box-sizing:border-box}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--accent-2)}
+.slide{min-height:100svh;scroll-snap-align:start;display:flex;align-items:center;
+  padding-block:clamp(40px,7vh,88px);
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  border-top:1px solid var(--line)}
+.slide:first-child{border-top:0}
+.slide.alt{background:var(--bg-2)}
+.frame{width:100%;max-width:1240px;margin:0 auto;display:grid;gap:28px}
+.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.eyebrow .n{font-family:var(--display);font-size:15px;letter-spacing:0;text-transform:none;color:var(--muted);font-weight:300}
+.title{font-size:clamp(34px,5vw,62px);font-variation-settings:"opsz" 144}
+.title i{font-style:italic;color:var(--accent)}
+.lead{font-size:clamp(18px,1.6vw,22px);color:var(--fg);max-width:62ch;line-height:1.5}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:36px;align-items:start}
+@media (max-width:900px){.split{grid-template-columns:1fr}}
+.text{display:grid;gap:18px;min-width:0}
+.text p{max-width:60ch;color:var(--fg)}
+.text .m{color:var(--muted)}
+.facts{display:grid;gap:10px;padding:0;margin:0;list-style:none}
+.facts li{display:grid;grid-template-columns:132px 1fr;gap:14px;padding:10px 0;border-top:1px solid var(--line);font-size:15.5px}
+.facts li:last-child{border-bottom:1px solid var(--line)}
+.facts b{font-weight:600;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding-top:2px}
+ul.pts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.pts li{padding-left:22px;position:relative;max-width:58ch}
+ul.pts li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.photos{display:grid;gap:12px;min-width:0}
+.photos.two{grid-template-columns:1fr 1fr}
+.photos.three{grid-template-columns:1fr 1fr 1fr}
+.photos.hero{grid-template-columns:1fr 1fr}
+.photos.hero figure:first-child{grid-column:1/-1}
+@media (max-width:560px){.photos.three{grid-template-columns:1fr 1fr}}
+figure{margin:0;min-width:0;display:grid;gap:6px}
+figure .ph{aspect-ratio:4/3;max-width:100%;width:100%;overflow:hidden;border-radius:6px;background:var(--panel);position:relative}
+.photos.hero figure:first-child .ph{aspect-ratio:16/9}
+figure img{width:100%;height:100%;object-fit:cover;display:block}
+figcaption{font-size:12.5px;color:var(--muted);line-height:1.35}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.badge.ok{color:var(--ok);border-color:var(--ok)}
+.badge.warn{color:var(--accent);border-color:var(--accent)}
+.badges{display:flex;gap:8px;flex-wrap:wrap}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px 18px 16px;display:grid;gap:8px;min-width:0}
+.card h3{font-size:22px}
+.card p{font-size:15px;color:var(--muted)}
+.card .big{font-family:var(--display);font-size:34px;color:var(--fg);line-height:1}
+.scroll{overflow-x:auto;min-width:0}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:15px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.d{font-family:var(--display);font-size:20px;white-space:nowrap;color:var(--accent)}
+td.k{white-space:nowrap;color:var(--muted)}
+td.r{text-align:right;white-space:nowrap}
+tr.sum td{border-top:2px solid var(--fg);font-weight:600}
+.note{font-size:13.5px;color:var(--muted);max-width:70ch}
+/* cover */
+.cover{position:relative;overflow:hidden;min-height:100svh;display:flex;align-items:flex-end;border-top:0}
+.cover .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%}
+.cover .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,26,34,.15) 0%,rgba(20,26,34,.55) 55%,rgba(20,26,34,.92) 100%)}
+.cover .frame{position:relative;gap:18px;padding-bottom:4vh}
+.cover h1{font-size:clamp(52px,9vw,124px);color:#f1eadb;font-variation-settings:"opsz" 144;line-height:.95}
+.cover h1 i{color:#e8a757}
+.cover .sub{font-size:clamp(18px,2vw,26px);color:#e5dccb;max-width:48ch;font-family:var(--display);font-style:italic;font-weight:300}
+.cover .meta{display:flex;gap:18px;flex-wrap:wrap;color:#cfc5b2;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+.cover .credit{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:10px;font-size:11.5px;color:#b9b0a0}
+/* map */
+.map{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px;min-width:0}
+.map svg{width:100%;height:auto;display:block}
+.legend{display:grid;gap:8px;font-size:14.5px}
+.legend li{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:baseline;padding:8px 0;border-top:1px solid var(--line)}
+.legend ol{list-style:none;margin:0;padding:0}
+.legend .no{font-family:var(--display);font-size:22px;color:var(--accent)}
+.legend .nt{color:var(--muted);white-space:nowrap;font-size:13px}
+/* nav */
+.rail{position:fixed;right:max(10px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);display:grid;gap:7px;z-index:5}
+.rail a{width:8px;height:8px;border-radius:50%;background:var(--line);display:block;border:0;padding:0}
+.rail a.on{background:var(--accent);transform:scale(1.35)}
+.rail a:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+@media (max-width:760px){.rail{display:none}}
+.counter{position:fixed;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));font-family:var(--display);font-size:14px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 12px;z-index:5}
+.kbd{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));font-size:12px;color:var(--muted);z-index:5}
+@media (max-width:760px){.kbd{display:none}}
+</style>
+
+</head>
+<body>
+<nav class="rail" id="rail" aria-label="Slides"></nav>
+<div class="counter" id="counter">1 / 18</div>
+<div class="kbd">↑ ↓ pijltjes</div>
+
+<main class="deck">
+
+<!-- 1 Cover -->
+<section class="slide cover" id="cover">
+  <img class="bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Sossusvlei_Dune_Namib_Desert_Namibia_Luca_Galuzzi_2004.JPG?width=2000" alt="Rode duinen van Sossusvlei in de Namib" onerror="this.style.display='none'">
+  <div class="scrim"></div>
+  <div class="frame">
+    <div class="eyebrow" style="color:#e8a757">Familiereis · juli of augustus 2028</div>
+    <h1>Namibië <i>met z’n elven</i></h1>
+    <p class="sub">Drie generaties, veertien dagen, twee auto’s. Van de duinen van Sossusvlei langs de Atlantische kust naar Damaraland en Etosha, zelf rijdend, op een niveau dat ruimte laat voor een vijfjarige én voor de begroting.</p>
+    <div class="meta"><span>6 volwassenen</span><span>5 kinderen</span><span>13 nachten</span><span>± 2.200 km</span></div>
+  </div>
+  <div class="credit">Foto: Luca Galuzzi, Wikimedia Commons, CC BY-SA 2.5</div>
+</section>
+
+<!-- 2 Gezelschap -->
+<section class="slide" id="gezelschap">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">02</span> Het gezelschap en de uitgangspunten</div>
+    <h2 class="title">Elf mensen, één ritme: <i>aankomen en blijven</i></h2>
+    <div class="split">
+      <div class="text">
+        <p class="lead">Opa en oma, jullie gezin en het gezin van je zusje. In 2028 zijn de kinderen ongeveer 10, 8 en 6, en 9 en 5, afhankelijk van verjaardagen. De jongste bepaalt bij elke lodge of het kan.</p>
+        <ul class="facts">
+          <li><b>Wanneer</b><span>Juli of augustus 2028: droog, koel, hun winter. Beste wildtijd aan de waterpoelen, nachten tot rond het vriespunt in de woestijn.</span></li>
+          <li><b>Hoe</b><span>Zelf rijden in twee auto’s: een 9-persoons 4x4 safaritruck plus een Fortuner. Nergens langer dan ruim vijf uur op één dag, behalve de safaridag door Etosha.</span></li>
+          <li><b>Wat</b><span>Natuur voorop, met de oorspronkelijke bewoners in Damaraland (Damara, San-rotskunst) als cultureel hart. Geen toeristische programma’s.</span></li>
+          <li><b>Niveau</b><span>Per plek het beste adres dat kinderen van 5 toelaat, met oog voor de prijs: in de woestijn Kwessi Dunes in plaats van &amp;Beyond, bij Etosha twee camps op één privéreservaat zodat de volwassenen de top krijgen en de kinderen ruimte.</span></li>
+          <li><b>Vlucht</b><span>Geen directe lijn vanuit Amsterdam; via Frankfurt op Windhoek (Hosea Kutako), nachtvlucht heen, avondvlucht terug.</span></li>
+        </ul>
+      </div>
+      <div class="cards">
+        <div class="card"><div class="big">13</div><p>nachten in Namibië, zes basisplekken, nergens korter dan twee nachten behalve de eerste en de laatste</p></div>
+        <div class="card"><div class="big">3 × 3</div><p>drie nachten in de woestijn, drie in Damaraland, drie aan Etosha: het ritme van jullie Vuurland-reis</p></div>
+        <div class="card"><div class="big">2</div><p>auto’s: iedereen past in de truck, de Fortuner is de rustplek voor wie even stilte wil</p></div>
+        <div class="card"><div class="big">5 jr</div><p>de maat van alles: elke lodge in dit deck neemt kinderen van vijf, of combineert twee camps op één reservaat</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 Route -->
+<section class="slide alt" id="route">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">03</span> De route</div>
+    <h2 class="title">Een lus met de klok mee, <i>zes keer neerstrijken</i></h2>
+    <div class="split">
+      <div class="map"><svg id="mapsvg" viewBox="0 0 600 560" role="img" aria-label="Kaart van Namibië met de route: Windhoek, NamibRand en Sossusvlei, Swakopmund, Damaraland, Etosha, Okonjima en terug naar Windhoek"></svg></div>
+      <div class="legend">
+        <ol>
+          <li><span class="no">1</span><span>Windhoek · GocheGanas</span><span class="nt">1 nacht · 1 u vanaf de luchthaven</span></li>
+          <li><span class="no">2</span><span>NamibRand · Kwessi Dunes</span><span class="nt">3 nachten · 5 u rijden</span></li>
+          <li><span class="no">3</span><span>Swakopmund · Strand Hotel</span><span class="nt">2 nachten · 5½ u</span></li>
+          <li><span class="no">4</span><span>Damaraland · Camp Kipwe</span><span class="nt">3 nachten · 5 u</span></li>
+          <li><span class="no">5</span><span>Etosha · Onguma</span><span class="nt">3 nachten · safaridag 7 u</span></li>
+          <li><span class="no">6</span><span>Okonjima · Plains Camp</span><span class="nt">1 nacht · 3½ u</span></li>
+          <li><span class="no">↩</span><span>Luchthaven Windhoek</span><span class="nt">3 u · avondvlucht</span></li>
+        </ol>
+        <p class="note">Rijtijden zijn ruim genomen voor gravel, kinderen en koffiestops. Alle wegen op deze route zijn goed gemarkeerde B-, C- en D-wegen; alleen de Etosha-dag vraagt vroeg vertrekken, de parkpoorten sluiten bij zonsondergang.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 Programma 1–7 -->
+<section class="slide" id="dag1">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">04</span> Programma · dag 1 tot 7</div>
+    <h2 class="title">Van de luchthaven naar de <i>kust</i></h2>
+    <div class="scroll"><table>
+      <tr><th style="width:9%">Dag</th><th style="width:22%">Waar</th><th style="width:14%">Rijden</th><th>Wat</th></tr>
+      <tr><td class="d">1</td><td>GocheGanas</td><td class="k">1 u</td><td>Landen in de ochtend, auto’s ophalen bij NTS, lunch en zwembad op de heuvel, zonsondergangrit over het reservaat (giraffen, witte neushoorns).</td></tr>
+      <tr><td class="d">2</td><td>NamibRand</td><td class="k">5 u</td><td>Over Rehoboth en de Spreetshoogte-pas naar het zuiden, appeltaart in Solitaire, aankomst Kwessi Dunes, eerste nacht in de open sterrenkamer van je eigen chalet.</td></tr>
+      <tr><td class="d">3</td><td>Sossusvlei</td><td class="k">2 × 1¼ u</td><td>Voor zonsopgang naar Sesriem: Dune 45, Deadvlei, Big Daddy voor wie wil, de Sesriem-canyon voor de kinderen. Middag rust en zwembad.</td></tr>
+      <tr><td class="d">4</td><td>NamibRand</td><td class="k">—</td><td>Reservaatdag: natuurrit langs de fairy circles en de oryx op de vlaktes, paardrijden door de duinen, quads voor de ouderen, ’s avonds het kampvuur. Optie ballonvaart bij dageraad.</td></tr>
+      <tr><td class="d">5</td><td>Swakopmund</td><td class="k">5½ u</td><td>Door de Kuiseb-canyon naar de kust, flamingo’s in de lagune van Walvis Bay, Strand Hotel aan zee. Koude avondlucht, warme chocolademelk.</td></tr>
+      <tr><td class="d">6</td><td>Swakopmund</td><td class="k">—</td><td>Sandwich Harbour met een gids in 4x4’s: duinen die in zee lopen, robben, oesters op het strand. Middag Living Desert of sandboarden.</td></tr>
+      <tr><td class="d">7</td><td>Damaraland</td><td class="k">5 u</td><td>Langs de Brandberg naar Camp Kipwe bij Twyfelfontein. Zonsondergang vanaf het dek op het kopje, avondeten in de boma, sterren boven de openluchtbadkamer.</td></tr>
+    </table></div>
+  </div>
+</section>
+
+<!-- 5 Programma 8–14 -->
+<section class="slide alt" id="dag2">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">05</span> Programma · dag 8 tot 14</div>
+    <h2 class="title">Rotskunst, olifanten en <i>waterpoelen</i></h2>
+    <div class="scroll"><table>
+      <tr><th style="width:9%">Dag</th><th style="width:22%">Waar</th><th style="width:14%">Rijden</th><th>Wat</th></tr>
+      <tr><td class="d">8</td><td>Damaraland</td><td class="k">—</td><td>Twyfelfontein (UNESCO, 6.000 jaar San-gravures), Organ Pipes en Burnt Mountain, ’s middags het Living Museum of the Damara: vuur maken, smeden, spoorzoeken.</td></tr>
+      <tr><td class="d">9</td><td>Damaraland</td><td class="k">—</td><td>Olifantendrive door de droge Aba Huab en Huab; de ouderen te voet met de Rhino Rangers naar zwarte neushoorns, de jongsten met hun eigen gids rond het camp.</td></tr>
+      <tr><td class="d">10</td><td>Etosha</td><td class="k">3½ u + park</td><td>Safaridag: vroeg weg, via Outjo naar Andersson’s Gate, met open daken langs Okaukuejo en Halali naar Namutoni, ’s avonds Onguma. Zie de alternatieve route verderop.</td></tr>
+      <tr><td class="d">11</td><td>Onguma</td><td class="k">—</td><td>Gamedrives op het eigen reservaat, Fischer’s Pan vanaf The Fort, de Onkolo Hide op ooghoogte met het water, Young Explorers-wandeling voor de kinderen.</td></tr>
+      <tr><td class="d">12</td><td>Etosha</td><td class="k">—</td><td>Zelf rijden in het park via de Von Lindequist-poort: Klein Namutoni, Chudop, de zoutpan. ’s Avonds bush dinner op het reservaat.</td></tr>
+      <tr><td class="d">13</td><td>Okonjima</td><td class="k">3½ u</td><td>Via Tsumeb en Otjiwarongo naar Plains Camp, ’s middags luipaarden volgen met de telemetrie van AfriCat, bezoek aan het Carnivore Care Centre.</td></tr>
+      <tr><td class="d">14</td><td>Naar huis</td><td class="k">3 u</td><td>Ochtendrit over de vlaktes, auto’s inleveren op Hosea Kutako, avondvlucht via Frankfurt. Thuis de volgende ochtend.</td></tr>
+    </table></div>
+  </div>
+</section>
+
+<!-- 6 Windhoek -->
+<section class="slide" id="windhoek">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">06</span> Dag 1 · Windhoek</div>
+    <h2 class="title">GocheGanas, <i>zacht landen</i></h2>
+    <div class="split">
+      <div class="text">
+        <p class="lead">Een lodge op een heuvelrug boven een privéreservaat van 60 km², 29 km van de stad. Zestien rieten suites, een wellnessdorp met verwarmd binnenbad, en witte neushoorns tijdens de sundowner.</p>
+        <ul class="facts">
+          <li><b>Kinderen</b><span>Alle leeftijden welkom; onder de 12 niet in het wellnesscentrum, wel op elke natuurrit. Eén familiesuite met twee slaapkamers.</span></li>
+          <li><b>Waarom hier</b><span>Omaanda (Zannier) is luxer, maar neemt pas vanaf 6 jaar. GocheGanas is ruim, rustig en in een uur te rijden na een nachtvlucht.</span></li>
+          <li><b>Indicatie</b><span>vanaf ± US$ 280 p.p.p.n. halfpension; kinderen onder 12 delen met ouders.</span></li>
+        </ul>
+        <div class="badges"><span class="badge ok">Alle leeftijden</span><span class="badge">1 nacht</span><span class="badge">1 u van de luchthaven</span></div>
+      </div>
+      <div class="photos hero">
+        <figure><div class="ph"><img src="https://yellowzebrasafaris.com/wp-content/uploads/2025/06/36838_gocheganas_lodge_with_giraffe-scaled.webp" alt="GocheGanas met een giraffe op de voorgrond" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>De lodge op de heuvelrug · foto GocheGanas via Yellow Zebra Safaris</figcaption></figure>
+        <figure><div class="ph"><img src="https://yellowzebrasafaris.com/wp-content/uploads/2025/06/36844_namibia_bedroom_suite.webp" alt="Slaapkamer van een suite" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Suite met uitzicht over het reservaat</figcaption></figure>
+        <figure><div class="ph"><img src="https://yellowzebrasafaris.com/wp-content/uploads/2025/06/36840_gocheganas_pool_namibia.webp" alt="Buitenbad van GocheGanas" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Het buitenbad, de eerste middag</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 Sossusvlei lodge -->
+<section class="slide alt" id="sossusvlei">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">07</span> Dag 2 tot 4 · NamibRand</div>
+    <h2 class="title">Kwessi Dunes, <i>canvas, riet en een sterrenkamer</i></h2>
+    <div class="split">
+      <div class="text">
+        <p class="lead">Twaalf chalets van canvas en riet diep in het NamibRand-reservaat, 200.000 hectare privéwoestijn en een International Dark Sky Reserve. Elk chalet heeft airco, een binnen- en buitendouche, een schaduwveranda en een aparte open sterrenkamer om in te slapen. Natural Selection runt het camp, met een zwembad en spa in het hoofdgebouw.</p>
+        <ul class="facts">
+          <li><b>Kinderen</b><span>Alle leeftijden welkom. Twee familiechalets voor twee volwassenen en twee kinderen, met een extra bed als optie; de rest in twin- of dubbelchalets.</span></li>
+          <li><b>Kamers</b><span>Twee familiechalets voor de gezinnen, twee gewone chalets voor opa en oma en de oudste kinderen. Vier chalets in totaal, naast elkaar met uitzicht op de duinen.</span></li>
+          <li><b>Inbegrepen</b><span>Alle maaltijden en dranken, de dagelijkse activiteiten, parkgeld en gidsen; bij drie nachten of meer ook de Sossusvlei-excursie. Natuurritten, nachtritten, wandelingen, paardrijden en quads horen bij het camp; ballon en helikopter apart.</span></li>
+          <li><b>Indicatie</b><span>vanaf ± N$ 10.850 p.p.p.n. all-in, ongeveer een derde van &amp;Beyond Sossusvlei Desert Lodge op hetzelfde reservaat. Dat verschil, zo’n dertigduizend euro voor de groep, is de reden om hier te kiezen.</span></li>
+        </ul>
+        <div class="badges"><span class="badge ok">Alle leeftijden</span><span class="badge">3 nachten</span><span class="badge warn">± 1 u van de Sesriem-poort</span></div>
+      </div>
+      <div class="photos hero">
+        <figure><div class="ph"><img src="https://naturalselection.travel/wp-content/uploads/2024/05/Gallery-1100x733_0014_05-Kwessi-Dunes.jpg" alt="De chalets van canvas en riet van Kwessi Dunes in de duinen" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>De chalets, canvas en riet tegen de duinen · foto Natural Selection</figcaption></figure>
+        <figure><div class="ph"><img src="https://naturalselection.travel/wp-content/uploads/2024/05/Accommodation-1100x739_0002_NAM_Kwessi-Dunes_Andrew-Morgan_L4_KwessiDunes_GuestBedroomExteriorAtNight.jpg" alt="Chalet bij nacht met de open sterrenkamer" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Chalet bij nacht, de sterrenkamer aan de zijkant</figcaption></figure>
+        <figure><div class="ph"><img src="https://naturalselection.travel/wp-content/uploads/2024/05/Gallery-1100x733_0012_03-Kwessi-Dunes-Swimming-pool-and-Spa.jpg" alt="Zwembad en spa van Kwessi Dunes" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Zwembad en spa bij het hoofdgebouw</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 Sossusvlei belevingen -->
+<section class="slide" id="duinen">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">08</span> Dag 3 en 4 · Belevingen</div>
+    <h2 class="title">De duinen bij zonsopgang, <i>de vlakte bij nacht</i></h2>
+    <div class="split">
+      <div class="photos hero">
+        <figure><div class="ph"><img src="https://naturalselection.travel/wp-content/uploads/2024/05/Mulitpurpose-1100x740_0002_26-Kwessi-Dunes-Deadvlei2.jpg" alt="Deadvlei: dode kameeldoornbomen op de witte kleipan tussen rode duinen" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Deadvlei · foto Natural Selection</figcaption></figure>
+        <figure><div class="ph"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Namib-Naukluft_Sand_Dunes_(2011).jpg?width=1600" alt="Duinen van de Namib-Naukluft bij laag licht" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Namib-Naukluft · foto Yathin S Krishnappa, Wikimedia Commons, CC BY-SA</figcaption></figure>
+        <figure><div class="ph"><img src="https://naturalselection.travel/wp-content/uploads/2024/05/Mulitpurpose-1100x740_0000_NAM_Kwessi-Dunes_Martin-Harvey_L3_fairycircle2.jpg" alt="Fairy circles op de vlaktes van NamibRand" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Fairy circles op het reservaat · Natural Selection</figcaption></figure>
+      </div>
+      <div class="text">
+        <ul class="pts">
+          <li><b>Deadvlei en Dune 45.</b> Om 6 uur weg, met eigen auto’s door de Sesriem-poort. De witte kleipan met zwarte, 700 jaar dode kameeldoornbomen is voor kinderen van 5 tot 10 een speelveld; Big Daddy (325 m) is voor wie wil klimmen, naar beneden rennen mag iedereen.</li>
+          <li><b>Sesriem-canyon.</b> Een kloof van 30 m diep waar je in kunt lopen, koel en schaduwrijk. Het betere middagprogramma voor de jongsten.</li>
+          <li><b>Fairy circles.</b> De raadselachtige kale cirkels in het gras van NamibRand, nog altijd niet verklaard; de gids kent de theorieën, de kinderen de beste. Onderweg oryx, springbok, zebra en met geluk een cheeta.</li>
+          <li><b>Nacht.</b> NamibRand is een van de donkerste plekken op aarde. Ieder chalet heeft een open sterrenkamer: een bed onder de Melkweg, en dekens, want het vriest in juli.</li>
+          <li><b>Optie.</b> Ballonvaart bij dageraad met champagneontbijt; kinderen moeten over de rand kunnen kijken (± 1,30 m), dus niet voor iedereen. Quads vanaf 16 jaar, paardrijden voor wie kan rijden.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 Swakopmund -->
+<section class="slide alt" id="kust">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">09</span> Dag 5 en 6 · De kust</div>
+    <h2 class="title">Swakopmund en <i>Sandwich Harbour</i></h2>
+    <div class="split">
+      <div class="text">
+        <p class="lead">Twee nachten aan de Atlantische Oceaan, niet om de stad maar om één dag: de duinen van de Namib die bij Sandwich Harbour recht de zee in lopen. Met gidsen in 4x4’s over duinruggen van 100 meter, langs flamingo’s, pelikanen en robben, oesters en vonkelwijn op het strand.</p>
+          <ul class="facts">
+            <li><b>Slapen</b><span>Strand Hotel, aan de Mole op het strand: familiekamers, een goed restaurant en een activiteitenbalie die Sandwich Harbour direct boekt. Geen lodge van het niveau van de rest van de reis, wel het beste hotel aan deze kust.</span></li>
+            <li><b>Kinderen</b><span>De tours rekenen een kindertarief van 4 tot 12 jaar; de duinritten zijn spannend maar veilig, de gidsen rijden al twintig jaar dit traject. Voor de jongste is een halve dag het beste.</span></li>
+            <li><b>Middag</b><span>Living Desert Tour (kameleons, gekko’s, de Namib op knie-hoogte), sandboarden op Dune 7, of gewoon het strand.</span></li>
+            <li><b>Onderweg</b><span>Dag 5 door de Kuiseb-canyon en de Welwitschia-vlakte: de mooiste rit van de reis, lunch in Solitaire.</span></li>
+          </ul>
+        <div class="badges"><span class="badge ok">Alle leeftijden</span><span class="badge">2 nachten</span><span class="badge">Halve dag Sandwich Harbour</span></div>
+      </div>
+      <div class="photos">
+        <figure><div class="ph" style="aspect-ratio:16/10"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Namib-Naukluft_Sand_Dunes_(2011).jpg?width=1600" alt="Zandduinen van de Namib" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>De duinen van de Namib, waar bij Sandwich Harbour de oceaan tegenaan slaat · foto Yathin S Krishnappa, Wikimedia Commons, CC BY-SA</figcaption></figure>
+        <div class="cards">
+          <div class="card"><div class="big">100 m</div><p>hoge duinen die tot in de branding lopen; de weg terug gaat over het strand bij laag water</p></div>
+          <div class="card"><div class="big">Ramsar</div><p>Sandwich Harbour is beschermd wetland: tienduizenden flamingo’s en steltlopers in de lagune</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 Onduli Ridge -->
+<section class="slide" id="damaraland">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">10</span> Dag 7 tot 9 · Damaraland</div>
+    <h2 class="title">Camp Kipwe, <i>iglo’s tussen de rotsblokken</i></h2>
+    <div class="split">
+      <div class="text">
+        <p class="lead">Negen ronde rieten bungalows en twee luxe suites, gebouwd tussen de granieten blokken van een kopje boven de droge Aba Huab, twintig minuten van Twyfelfontein. Elke bungalow kijkt naar de zonsondergang, heeft een openluchtbadkamer tussen de rotsen en een eigen veranda. Een zwembad in de rotsen, een sundowner-dek bovenop het kopje en een boma voor het avondeten.</p>
+        <ul class="facts">
+          <li><b>Kinderen</b><span>Alle leeftijden welkom, met kindermenu’s, spelletjes en een kindertarief. Twee bungalows hebben een koepeltent tussen de rotsen erachter voor twee kinderen; verder extra bedden. Het terrein is ruig en de pool open, dus de jongsten onder toezicht.</span></li>
+          <li><b>Kamers</b><span>Twee familiebungalows met kindertent voor de gezinnen (de jongste op een extra bed bij zijn ouders), een luxe suite met eigen plunge pool voor opa en oma. Drie van de elf eenheden, drie nachten, de rest van het camp gewoon open voor andere gasten.</span></li>
+          <li><b>Inbegrepen</b><span>Halfpension met lunch en afternoon tea; dranken en activiteiten apart. De olifantenrit (3 tot 5 uur) en de middagexcursie naar Twyfelfontein boek je bij het camp, het Living Museum doe je zelf met de auto’s.</span></li>
+          <li><b>Indicatie</b><span>± N$ 6.700 p.p.p.n. halfpension in 2026 (± € 335), kinderen minder. Voor de groep ruwweg de helft van wat Onduli Ridge exclusief zou kosten, in hetzelfde landschap met dezelfde excursies.</span></li>
+        </ul>
+        <div class="badges"><span class="badge ok">Alle leeftijden</span><span class="badge">3 nachten</span><span class="badge">20 min van Twyfelfontein</span></div>
+      </div>
+      <div class="photos hero">
+        <figure><div class="ph"><img src="https://www.go2africa.com/wp-content/uploads/2017/08/Camp-Kipwe-Chiwani-Safari-Camps-Camp-Kipwe-Aerial-Shot.jpg" alt="Luchtfoto van Camp Kipwe tussen de rotsblokken" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Het camp in de rotsen boven de Aba Huab · foto Camp Kipwe via Go2Africa</figcaption></figure>
+        <figure><div class="ph"><img src="https://www.go2africa.com/wp-content/uploads/2017/08/Camp-Kipwe-kipwe_bungalow_1.jpg" alt="Een ronde rieten bungalow van Camp Kipwe" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Een van de negen bungalows</figcaption></figure>
+        <figure><div class="ph"><img src="https://www.go2africa.com/wp-content/uploads/2017/08/Camp-Kipwe-s-Swimming-Pool.jpg" alt="Zwembad van Camp Kipwe tussen de rotsen" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Het zwembad, verstopt tussen de rotsen</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 Damaraland belevingen -->
+<section class="slide alt" id="twyfelfontein">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">11</span> Dag 8 en 9 · Belevingen</div>
+    <h2 class="title">Rotskunst van 6.000 jaar, <i>olifanten in een droge rivier</i></h2>
+    <div class="split">
+      <div class="photos hero">
+        <figure><div class="ph"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Desert_elephant_(Loxodonta_africana)_spraying_sand.jpg?width=1600" alt="Woestijnolifant die zand over zichzelf gooit in Damaraland" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Woestijnolifant, Damaraland · foto Charles J. Sharp, Wikimedia Commons, CC BY-SA 4.0</figcaption></figure>
+        <figure><div class="ph"><img src="https://www.go2africa.com/wp-content/uploads/2017/08/Camp-Kipwe-twyfelfontein_day-trip1.jpg" alt="Rotsgravures van Twyfelfontein" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>De gravures van Twyfelfontein · Camp Kipwe via Go2Africa</figcaption></figure>
+        <figure><div class="ph"><img src="https://www.go2africa.com/wp-content/uploads/2017/08/Camp-Kipwe-Boma-Dining-at-Camp-Kipwe.jpg" alt="Avondeten in de boma van Camp Kipwe" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Avondeten in de boma, bij het vuur</figcaption></figure>
+      </div>
+      <div class="text">
+        <ul class="pts">
+          <li><b>Twyfelfontein.</b> Namibië’s eerste UNESCO-werelderfgoed: ruim 2.500 gravures van giraffen, neushoorns, de Leeuwman met zijn geknikte staart, 20 minuten van het camp. Een gids van de conservancy leidt rond; de kinderen zoeken de sporen in de steen.</li>
+          <li><b>Living Museum of the Damara.</b> Het enige museum voor de Damara-cultuur, gerund door Damara-families zelf: vuur maken, leer looien, smeden, spoorzoeken, liederen. Het verdiende deel van de inheemse cultuur op deze reis.</li>
+          <li><b>Olifanten.</b> De woestijnolifanten trekken door de droge beddingen van de Aba Huab en Huab, vaak vlak bij Twyfelfontein. Vanuit de open auto, op de afstand die de gids bepaalt.</li>
+          <li><b>Derde dag.</b> Organ Pipes en Burnt Mountain liggen op de route naar Twyfelfontein; het Versteende Woud bij Khorixas is een eigen uitje met de auto’s. Wie zwarte neushoorns wil, boekt vanuit Kipwe een dagrit met een gids naar het Palmwag-gebied; dat is een lange dag en niet voor de jongsten.</li>
+          <li><b>Niet in deze reis.</b> De Himba in het Kaokoveld en de Skeleton Coast liggen nog eens een dag verder noordwaarts; dat past in zestien dagen, niet in veertien.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 Onguma -->
+<section class="slide" id="etosha">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">12</span> Dag 10 tot 12 · Etosha</div>
+    <h2 class="title">Onguma: <i>Bush Camp voor de gezinnen, The Fort voor opa en oma</i></h2>
+    <div class="split">
+      <div class="text">
+        <p class="lead">Een familiebedrijf met een privéreservaat van 36.000 hectare, negen kilometer van de oostpoort van Etosha. Zes camps delen één reservaat, één gidsteam en alle activiteiten; alleen het comfortniveau verschilt. Dat maakt de splitsing mogelijk.</p>
+        <ul class="facts">
+          <li><b>Bush Camp</b><span>Grotendeels omheind, achttien kamers waaronder familie-units met vier bedden en loftkamers, een boomhut-hide boven de waterpoel. Alle leeftijden welkom, het Young Explorers-programma voor 5 tot 12 jaar.</span></li>
+          <li><b>The Fort</b><span>Bekroonde Afro-Marokkaanse architectuur met uitzicht over Fischer’s Pan; de zonsondergangen vanaf het terras zijn de mooiste van het land. Vanaf 7 jaar, dus ook een plek voor de oudste kleinkinderen als ze een nacht bij opa en oma willen.</span></li>
+          <li><b>Camp Kala</b><span>Vier suites, butler, plunge pools, Condé Nast Hot List: de absolute top, maar vanaf 12 jaar. Een optie voor opa en oma in plaats van The Fort.</span></li>
+          <li><b>Indicatie</b><span>Bush Camp ± N$ 3.100 tot 4.600 p.p.p.n. all-in; The Fort en Camp Kala op aanvraag.</span></li>
+        </ul>
+        <div class="badges"><span class="badge ok">Bush Camp: alle leeftijden</span><span class="badge warn">The Fort: 7+</span><span class="badge">3 nachten</span></div>
+      </div>
+      <div class="photos two">
+        <figure><div class="ph"><img src="https://i0.wp.com/onguma.com/wp-content/uploads/2026/07/onguma_safari_camps_the_fort_camp_david_rogers-33.jpg?fit=1400%2C938&quality=89&ssl=1" alt="Onguma The Fort bij avondlicht" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>The Fort boven Fischer’s Pan · foto Onguma Safari Camps</figcaption></figure>
+        <figure><div class="ph"><img src="https://i0.wp.com/onguma.com/wp-content/uploads/2026/07/onguma_safari_camps_bush_camp_david_rogers_2019-9.jpg?fit=1400%2C932&quality=89&ssl=1" alt="Onguma Bush Camp aan de waterpoel" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Bush Camp, aan de actiefste waterpoel van het reservaat</figcaption></figure>
+        <figure><div class="ph"><img src="https://i0.wp.com/onguma.com/wp-content/uploads/2026/07/onguma_safari_camps_cmap_kala-_david_rogers-25-2.jpg?fit=1400%2C788&quality=89&ssl=1" alt="Camp Kala, suite op een verhoogd dek" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Camp Kala, de top van het reservaat</figcaption></figure>
+        <figure><div class="ph"><img src="https://i0.wp.com/onguma.com/wp-content/uploads/2026/07/onguma_safari_camps_wildlife_jan_nadia_snijders_2024-16-1.jpg?fit=1400%2C932&quality=89&ssl=1" alt="Gamedrive op het Onguma-reservaat" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Gamedrive op het eigen reservaat</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 Etosha safaridag -->
+<section class="slide alt" id="safaridag">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">13</span> Dag 10 en 12 · In het park</div>
+    <h2 class="title">De safaridag dwars door Etosha, <i>met de daken open</i></h2>
+    <div class="split">
+      <div class="photos">
+        <figure><div class="ph" style="aspect-ratio:16/9"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Elephants_rushing_to_water_(Etosha,_2013).jpg?width=1800" alt="Kudde olifanten die naar een waterpoel in Etosha rent" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Olifanten op weg naar het water, Etosha · foto Yathin S Krishnappa, Wikimedia Commons, CC BY-SA</figcaption></figure>
+        <div class="cards">
+          <div class="card"><div class="big">22.270 km²</div><p>half Zwitserland; in het droge seizoen verzamelt alles zich rond ruim veertig waterpoelen</p></div>
+          <div class="card"><div class="big">60 km/u</div><p>maximum in het park; een dag erdoor is een dag safari, geen dag rijden</p></div>
+        </div>
+      </div>
+      <div class="text">
+        <ul class="pts">
+          <li><b>Dag 10, de doorsteek.</b> Om 7 uur weg bij Kipwe, via Khorixas en Outjo in 3½ uur naar Andersson’s Gate. Dan 150 km parkweg: Okaukuejo (waterpoel, benzine), Halali voor de lunch, Namutoni, en om 17 uur bij Onguma. Een lange dag die zichzelf terugbetaalt: het hele park in één keer, met de pop-up daken van de truck open.</li>
+          <li><b>Alternatief</b> als zeven uur te veel is met de jongste: buitenom via Outjo, Otavi en Tsumeb (5½ uur asfalt), of de eerste Etosha-nacht aan de zuidkant bij Ongava en de dag erna rustig naar het oosten.</li>
+          <li><b>Dag 12, zelf rijden.</b> Via de Von Lindequist-poort op 9 km: Klein Namutoni en Chudop zijn vlakbij en in de ochtend druk bezet door zebra’s, giraffen en olifanten. Terug voor de lunch, ’s middags het reservaat van Onguma.</li>
+          <li><b>De poorten</b> sluiten bij zonsondergang (rond 18 uur in juli). De gidsen van Onguma kennen de dagelijkse waarnemingen; vraag ’s ochtends waar de leeuwen liggen.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 Okonjima -->
+<section class="slide" id="okonjima">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">14</span> Dag 13 · Okonjima</div>
+    <h2 class="title">Plains Camp en AfriCat, <i>luipaarden op de valreep</i></h2>
+    <div class="split">
+      <div class="text">
+        <p class="lead">Het reservaat van 220 km² van de familie Hanssen, halverwege Etosha en Windhoek, en de thuisbasis van de AfriCat Foundation. Een van de langstlopende luipaardonderzoeken van Namibië: de dieren dragen zenders, en de gids volgt het signaal tot je ze ziet.</p>
+        <ul class="facts">
+          <li><b>Kinderen</b><span>Plains Camp neemt kinderen vanaf 3 jaar: twee family units met tussendeur in de Classic-prijsklasse en vier in de View-klasse. Vanaf 3 mee op de game- en natuurrit, vanaf 8 op bijna alles, het tracken te voet vanaf 12.</span></li>
+          <li><b>Waarom niet de Villa</b><span>Okonjima’s African Villa, exclusief met eigen chef en gids, staat drie jaar op rij in World’s Best, maar neemt kinderen vanaf 12. Bush Camp ook. Plains Camp is het eerlijke antwoord voor deze groep.</span></li>
+          <li><b>Indicatie</b><span>vanaf ± N$ 4.800 p.p.p.n. laagseizoen, activiteiten apart.</span></li>
+          <li><b>Alternatief</b><span>Okonjima overslaan en de laatste nacht terug naar GocheGanas (2 uur van de luchthaven), als één luipaardmiddag de omweg niet waard lijkt.</span></li>
+        </ul>
+        <div class="badges"><span class="badge ok">Vanaf 3 jaar</span><span class="badge">1 nacht</span><span class="badge">3 u naar de luchthaven</span></div>
+      </div>
+      <div class="photos hero">
+        <figure><div class="ph"><img src="https://i0.wp.com/okonjima.com/wp-content/uploads/2024/07/namibia-okonjima-plains-camp-lodge-06756.jpg?fit=1400%2C934&ssl=1" alt="Okonjima Plains Camp bij zonsondergang" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Plains Camp op de vlakte · foto Okonjima</figcaption></figure>
+        <figure><div class="ph"><img src="https://i0.wp.com/okonjima.com/wp-content/uploads/2026/04/Okonjima_nature_reserve_plains_camp-20.jpg?fit=1400%2C934&ssl=1" alt="View Room van Plains Camp" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>View Room met veranda en dagbed</figcaption></figure>
+        <figure><div class="ph"><img src="https://i0.wp.com/okonjima.com/wp-content/uploads/2024/05/okonjima_Plains_camp_exterior_main_Barn1.jpg?fit=1400%2C788&ssl=1" alt="De Barn, het hart van Plains Camp" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>De Barn, met zwembad en waterpoel</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 Voertuigen -->
+<section class="slide alt" id="auto">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">15</span> Zelf rijden</div>
+    <h2 class="title">Eén truck voor negen, <i>één Fortuner voor twee</i></h2>
+    <div class="split">
+      <div class="text">
+        <p class="lead">De 11-persoons safaritruck wordt alleen met chauffeur verhuurd. De 9-persoons versie is volgens Namibia Tours &amp; Safaris ook zelf te rijden als de bestuurder een C1-rijbewijs heeft. Dat is de sleutel tot deze opzet.</p>
+        <ul class="facts">
+          <li><b>Safari 9-seater</b><span>Verlengde Land Cruiser van 18 voet, 4,5 liter diesel, handgeschakeld, 4x4 met low range en diff lock, airco, pop-up dak, extra tank voor ± 2.000 km, 9 stoelen waarvan 6 met groot raam. Extra bestuurder inbegrepen; kinderzitjes, koelkast, bagagetrailer en satelliettelefoon als opties.</span></li>
+          <li><b>Toyota Fortuner</b><span>Automaat, 5 zitplaatsen, comfortabel op gravel. De tweede auto voor opa en oma, of voor wie even rust wil, plus de rest van de bagage. Twee auto’s op 2.200 km is ook gewoon verstandig.</span></li>
+          <li><b>Tarief 2027</b><span>9-seater hoogseizoen N$ 6.130 per dag bij 15 dagen of langer (± € 300), eigen risico N$ 15.000. Fortuner vanaf ± US$ 195 per dag.</span></li>
+          <li><b>Open vraag</b><span>Of een Nederlands C1 met internationaal rijbewijs volstaat, en of de bagagetrailer daarbij mag. Als het antwoord nee is: twee 6/7-persoons Hilux-safari’s (automaat beschikbaar) in plaats van de truck.</span></li>
+        </ul>
+        <div class="badges"><span class="badge warn">C1-rijbewijs halen in 2027</span><span class="badge">NTS, Swakopmund</span></div>
+      </div>
+      <div class="photos hero">
+        <figure><div class="ph"><img src="https://cdn.prod.website-files.com/6076a360dddf8eb19214e412/60b0ae764ab3df873f7a006d_land-cruiser-safari-banner-image-5e1f0245d730e.avif" alt="De 9-persoons safaritruck in het landschap" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>De Safari 9-seater · foto Namibia Tours &amp; Safaris</figcaption></figure>
+        <figure><div class="ph"><img src="https://cdn.prod.website-files.com/6076a360dddf8eb19214e412/66050fa4f2cad18bf29e1a1c_9-seater.avif" alt="Safaritruck met pop-up dak" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Pop-up dak open, zes raamplaatsen</figcaption></figure>
+        <figure><div class="ph"><img src="https://cdn.prod.website-files.com/6076a360dddf8eb19214e412/620b5658c7f81379e05b5b6c_3thumb.avif" alt="Interieur van de safaritruck" loading="lazy" onerror="this.closest('figure').hidden=true"></div><figcaption>Het interieur, open naar de bestuurder</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 Kinderbeleid -->
+<section class="slide" id="kinderen">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">16</span> Kinderbeleid</div>
+    <h2 class="title">Waar een vijfjarige <i>welkom is</i></h2>
+    <p class="lead">De beste adressen van Namibië zijn gebouwd voor stellen. Dit is de kaart waarop de keuzes in dit deck rusten, met de lodges die afvielen en waarom.</p>
+    <div class="scroll"><table>
+      <tr><th style="width:24%">Lodge</th><th style="width:16%">Minimumleeftijd</th><th style="width:14%">In dit plan</th><th>Toelichting</th></tr>
+      <tr><td>GocheGanas</td><td>geen</td><td style="color:var(--ok)">gekozen</td><td>onder 12 niet in het wellnesscentrum; balkons vragen toezicht</td></tr>
+      <tr><td>Zannier Omaanda</td><td>6 jaar</td><td style="color:var(--muted)">afgevallen</td><td>luxer, maar de jongste mag niet mee</td></tr>
+      <tr><td>Kwessi Dunes</td><td>geen</td><td style="color:var(--ok)">gekozen</td><td>twee familiechalets met extra bed, all-in, een derde van de prijs van &amp;Beyond</td></tr>
+      <tr><td>&amp;Beyond Sossusvlei Desert Lodge</td><td>geen</td><td style="color:var(--muted)">afgevallen op prijs</td><td>het hoogste adres van de woestijn, zelfde reservaat; onder 6 niet op de geplande activiteiten</td></tr>
+      <tr><td>Wilderness Little Kulala</td><td>6 jaar</td><td style="color:var(--muted)">afgevallen</td><td>één familiesuite, verder volwassen sfeer</td></tr>
+      <tr><td>Camp Kipwe</td><td>geen</td><td style="color:var(--ok)">gekozen</td><td>twee bungalows met kindertent, extra bedden, kindertarief; ruig terrein en open pool</td></tr>
+      <tr><td>Onduli Ridge</td><td>geen</td><td style="color:var(--muted)">afgevallen op prijs</td><td>zes suites, alleen passend als je het hele camp neemt; dat willen we niet</td></tr>
+      <tr><td>Onguma Bush Camp</td><td>geen</td><td style="color:var(--ok)">gekozen</td><td>family units, omheind, Young Explorers</td></tr>
+      <tr><td>Onguma The Fort · Camp Kala</td><td>7 · 12 jaar</td><td style="color:var(--ok)">opa en oma</td><td>zelfde reservaat, vijf minuten van Bush Camp</td></tr>
+      <tr><td>Villa Mushara (Etosha-oost)</td><td>ongeschikt</td><td style="color:var(--muted)">afgevallen</td><td>onomheinde plunge pools, niets voor kinderen</td></tr>
+      <tr><td>Okonjima Plains Camp</td><td>3 jaar</td><td style="color:var(--ok)">gekozen</td><td>Villa en Bush Camp zijn vanaf 12</td></tr>
+    </table></div>
+  </div>
+</section>
+
+<!-- 17 Kosten -->
+<section class="slide alt" id="kosten">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">17</span> Kostenbeeld</div>
+    <h2 class="title">Een eerste indicatie, <i>geen offerte</i></h2>
+    <div class="split">
+      <div class="scroll"><table>
+        <tr><th style="width:44%">Onderdeel</th><th style="width:28%">Basis</th><th style="width:28%" class="r">Indicatie</th></tr>
+        <tr><td>GocheGanas, 1 nacht</td><td class="k">11 pers., halfpension</td><td class="r">€ 2.500</td></tr>
+        <tr><td>Kwessi Dunes, 3 nachten</td><td class="k">4 chalets, all-in</td><td class="r">€ 13.000 tot 15.000</td></tr>
+        <tr><td>Strand Hotel + Sandwich Harbour</td><td class="k">5 kamers, 2 nachten, tour</td><td class="r">€ 3.500</td></tr>
+        <tr><td>Camp Kipwe, 3 nachten</td><td class="k">2 familiebungalows + suite, halfpension, excursies</td><td class="r">€ 9.000 tot 11.000</td></tr>
+        <tr><td>Onguma, 3 nachten</td><td class="k">Bush Camp + The Fort</td><td class="r">€ 7.500 tot 9.000</td></tr>
+        <tr><td>Okonjima Plains Camp, 1 nacht</td><td class="k">incl. activiteiten</td><td class="r">€ 3.000</td></tr>
+        <tr><td>Twee auto’s, 14 dagen</td><td class="k">9-seater + Fortuner, brandstof</td><td class="r">€ 8.000</td></tr>
+        <tr><td>Vluchten via Frankfurt</td><td class="k">11 × economy</td><td class="r">€ 15.000 tot 20.000</td></tr>
+        <tr><td>Parkgeld, fooien, ballon, verzekering</td><td class="k"></td><td class="r">€ 6.000 tot 9.000</td></tr>
+        <tr class="sum"><td>Totaal, hoogseizoen</td><td class="k">11 personen</td><td class="r">€ 67.000 tot 79.000</td></tr>
+        <tr><td>Ter vergelijking: &amp;Beyond en Onduli exclusief</td><td class="k">de eerste versie van dit plan</td><td class="r">€ 108.000 tot 122.000</td></tr>
+      </table></div>
+      <div class="text">
+        <ul class="pts">
+          <li>Gebaseerd op gepubliceerde tarieven 2026 en 2027, hoogseizoen, omgerekend met ± N$ 20 per euro en kindertarieven van ongeveer de helft waar lodges die hanteren. Voor 2028 is 5 tot 10% opslag normaal.</li>
+          <li>Twee keuzes bepalen het verschil met de eerste versie: Kwessi Dunes in plaats van &amp;Beyond (zo’n dertigduizend euro) en Camp Kipwe in plaats van Onduli Ridge exclusief (nog eens tien- tot vijftienduizend). Geen enkel camp wordt exclusief afgehuurd; overal zijn andere gasten.</li>
+          <li>Business class voor de volwassenen voegt ruwweg € 15.000 tot 20.000 toe.</li>
+          <li>Een Namibische reisorganisator (NTS, Ultimate Safaris of Expert Africa) maakt hier binnen een week een echte offerte van, inclusief beschikbaarheid; lodges voor juli en augustus zijn vaak een jaar vooruit vol.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 Volgende stappen -->
+<section class="slide" id="stappen">
+  <div class="frame">
+    <div class="eyebrow"><span class="n">18</span> Volgende stappen</div>
+    <h2 class="title">Wat er nu te doen is, <i>in volgorde</i></h2>
+    <div class="cards">
+      <div class="card"><div class="big">1</div><h3>Mail naar NTS</h3><p>Twee vragen: volstaat een Nederlands C1 met internationaal rijbewijs voor de Safari 9-seater, en mag de bagagetrailer daarbij. Plus de beschikbaarheid van twee 7-seaters als reserve.</p></div>
+      <div class="card"><div class="big">2</div><h3>Kipwe: de drie kamers vastleggen</h3><p>Camp Kipwe heeft maar twee bungalows met kindertent en twee luxe suites. Die moeten als eerste gereserveerd, nog voor de rest van de route rond is.</p></div>
+      <div class="card"><div class="big">3</div><h3>Vraag een offerte</h3><p>Eén reisorganisator die alle lodges en kinderprijzen regelt, zonder exclusieve boekingen. Juli en augustus 2028 boek je in de zomer van 2027.</p></div>
+      <div class="card"><div class="big">4</div><h3>C1-rijbewijs</h3><p>Een paar lessen en een CBR-examen in 2027 voor wie de truck gaat rijden; het internationale rijbewijs kan vlak voor vertrek.</p></div>
+      <div class="card"><div class="big">5</div><h3>Vluchten</h3><p>Schema’s voor zomer 2028 openen elf maanden vooraf. Elf stoelen op één vlucht via Frankfurt vraagt vroeg boeken, zeker in business.</p></div>
+      <div class="card"><div class="big">6</div><h3>Het gesprek met de familie</h3><p>Dit deck is daarvoor gemaakt. Twee vragen om samen te nemen: wie rijdt de truck, en is de safaridag door Etosha een uitdaging of juist het hoogtepunt.</p></div>
+    </div>
+    <p class="note">Bronnen voor de lodgegegevens: de lodges zelf (Onguma, Okonjima, Natural Selection, Wolwedans), Expert Africa, Yellow Zebra Safaris, Go2Africa, Chalo Africa en Namibia Tours &amp; Safaris, oktober 2026. Kinderbeleid en tarieven veranderen; alles hier is een voorstel om op door te vragen.</p>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  // Map: Namibia outline and the route, drawn from longitude/latitude.
+  var svg=document.getElementById('mapsvg');
+  var W=600,H=560,lon0=11.3,lon1=25.6,lat0=-16.9,lat1=-29.1;
+  function X(lon){return 24+(lon-lon0)/(lon1-lon0)*(W-48)}
+  function Y(lat){return 24+(lat0-lat)/(lat0-lat1)*(H-48)}
+  var outline=[[16.45,-28.6],[15.7,-27.9],[15.1,-26.6],[14.9,-25.5],[14.8,-24.5],[14.5,-23.6],[14.5,-22.95],[14.52,-22.68],[14.0,-21.8],[13.4,-20.8],[13.0,-19.9],[12.6,-19.0],[12.1,-18.3],[11.8,-17.5],[11.75,-17.25],[12.3,-17.4],[13.2,-17.1],[13.9,-17.3],[14.5,-17.4],[16.0,-17.39],[18.0,-17.39],[20.0,-17.39],[20.9,-17.9],[21.4,-17.9],[23.3,-17.9],[24.3,-17.5],[25.26,-17.8],[24.5,-18.3],[23.3,-18.3],[22.0,-18.0],[21.0,-18.4],[21.0,-22.0],[20.0,-22.0],[20.0,-28.4],[19.3,-28.8],[18.0,-28.6],[17.2,-28.1],[16.8,-28.4],[16.45,-28.6]];
+  var route=[[17.47,-22.48],[17.21,-22.81],[17.08,-23.32],[16.0,-23.9],[15.80,-24.49],[15.95,-25.05],[15.80,-24.49],[16.0,-23.9],[15.5,-23.5],[14.5,-22.95],[14.53,-22.68],[14.28,-22.12],[14.87,-21.21],[14.45,-20.55],[14.97,-20.37],[16.15,-20.1],[15.92,-19.37],[15.92,-19.18],[16.47,-19.04],[16.94,-18.81],[17.05,-18.73],[17.72,-19.24],[17.33,-19.64],[16.65,-20.46],[16.65,-20.85],[16.91,-21.98],[17.47,-22.48]];
+  var stops=[
+    {n:'1',name:'Windhoek',lon:17.21,lat:-22.81,dx:12,dy:-8},
+    {n:'2',name:'NamibRand · Sossusvlei',lon:15.95,lat:-25.05,dx:12,dy:6},
+    {n:'3',name:'Swakopmund',lon:14.53,lat:-22.68,dx:-12,dy:-10,anchor:'end'},
+    {n:'4',name:'Damaraland · Camp Kipwe',lon:14.38,lat:-20.58,dx:-12,dy:-10,anchor:'end'},
+    {n:'5',name:'Etosha · Onguma',lon:17.05,lat:-18.73,dx:12,dy:-8},
+    {n:'6',name:'Okonjima',lon:16.65,lat:-20.85,dx:12,dy:6}
+  ];
+  var cs=getComputedStyle(document.documentElement);
+  function tok(n){return cs.getPropertyValue(n).trim()}
+  var ns='http://www.w3.org/2000/svg';
+  function el(t,a){var e=document.createElementNS(ns,t);for(var k in a)e.setAttribute(k,a[k]);return e}
+  var d='';outline.forEach(function(p,i){d+=(i?'L':'M')+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1)});d+='Z';
+  svg.appendChild(el('path',{d:d,fill:tok('--bg-2'),stroke:tok('--line'),'stroke-width':1.5,'stroke-linejoin':'round'}));
+  // coast line emphasis
+  var c='';outline.slice(0,15).forEach(function(p,i){c+=(i?'L':'M')+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1)});
+  svg.appendChild(el('path',{d:c,fill:'none',stroke:tok('--accent-2'),'stroke-width':2.5,'stroke-linecap':'round'}));
+  var r='';route.forEach(function(p,i){r+=(i?'L':'M')+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1)});
+  svg.appendChild(el('path',{d:r,fill:'none',stroke:tok('--accent'),'stroke-width':3,'stroke-linejoin':'round','stroke-linecap':'round','stroke-dasharray':'1 7'}));
+  svg.appendChild(el('path',{d:r,fill:'none',stroke:tok('--accent'),'stroke-width':1.2,opacity:.7}));
+  // Etosha pan marker
+  var pan=el('ellipse',{cx:X(16.4),cy:Y(-18.75),rx:28,ry:9,fill:tok('--fg'),opacity:.18});svg.appendChild(pan);
+  var t=el('text',{x:X(16.4),y:Y(-18.75)-14,'text-anchor':'middle','font-size':'11','font-family':tok('--body'),fill:tok('--muted')});t.textContent='Etosha-pan';svg.appendChild(t);
+  var a=el('text',{x:X(12.1),y:Y(-24.2),'font-size':'11','font-family':tok('--body'),fill:tok('--accent-2'),transform:'rotate(-72 '+X(12.1)+' '+Y(-24.2)+')'});a.textContent='Atlantische Oceaan';svg.appendChild(a);
+  stops.forEach(function(s){
+    var x=X(s.lon),y=Y(s.lat);
+    svg.appendChild(el('circle',{cx:x,cy:y,r:11,fill:tok('--accent')}));
+    var n=el('text',{x:x,y:y+4.2,'text-anchor':'middle','font-size':'12','font-weight':'700','font-family':tok('--body'),fill:tok('--bg')});n.textContent=s.n;svg.appendChild(n);
+    var l=el('text',{x:x+s.dx,y:y+s.dy,'text-anchor':s.anchor||'start','font-size':'13','font-family':tok('--body'),fill:tok('--fg')});l.textContent=s.name;svg.appendChild(l);
+  });
+  var ap=el('text',{x:X(17.47)+10,y:Y(-22.48)+16,'font-size':'11','font-family':tok('--body'),fill:tok('--muted')});ap.textContent='✈ Hosea Kutako';svg.appendChild(ap);
+
+  // Deck navigation
+  var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var rail=document.getElementById('rail'),counter=document.getElementById('counter');
+  slides.forEach(function(s,i){var b=document.createElement('a');b.href='#'+s.id;b.setAttribute('aria-label','Slide '+(i+1));rail.appendChild(b)});
+  var dots=rail.children,cur=0;
+  function setCur(i){cur=i;counter.textContent=(i+1)+' / '+slides.length;for(var k=0;k<dots.length;k++)dots[k].classList.toggle('on',k===i)}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setCur(slides.indexOf(e.target))})},{threshold:.55});
+    slides.forEach(function(s){io.observe(s)});
+  }
+  function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({block:'start'});setCur(i)}
+  document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(cur+1)}
+    else if(e.key==='ArrowUp'||e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1)}
+    else if(e.key==='Home'){go(0)}else if(e.key==='End'){go(slides.length-1)}
+  });
+  var h=(location.hash||'').replace('#','');
+  if(h){var ix=slides.findIndex(function(s){return s.id===h});if(ix>0)setTimeout(function(){go(ix)},50)}
+  setCur(0);
+})();
+</script>
+
+</body>
+</html>
