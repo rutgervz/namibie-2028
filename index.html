@@ -28,7 +28,8 @@
   --fg:#1f2229; --muted:#5c6069; --accent:#b4651c; --accent-2:#3f6c80; --ok:#3f7a4a;
   color-scheme:light;
 }
-html{scroll-snap-type:y proximity;scroll-behavior:smooth}
+html{scroll-behavior:smooth}
+@media (min-width:761px) and (min-height:700px){html{scroll-snap-type:y proximity}}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.5;margin:0}
 *{box-sizing:border-box}
@@ -641,11 +642,10 @@ table.kosten{min-width:0}
   menubtn.addEventListener('click',function(){menu.hidden?openMenu():closeMenu()});
   document.getElementById('menuclose').addEventListener('click',closeMenu);
   menu.addEventListener('click',function(e){if(e.target===menu)closeMenu()});
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setCur(slides.indexOf(e.target))})},{threshold:.55});
-    slides.forEach(function(s){io.observe(s)});
-  }
-  function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({block:'start'});setCur(i)}
+  var lock=0;
+  function current(){var y=window.scrollY+window.innerHeight*.4,best=0;for(var k=0;k<slides.length;k++){if(slides[k].offsetTop<=y)best=k}return best}
+  window.addEventListener('scroll',function(){if(Date.now()<lock)return;var c=current();if(c!==cur)setCur(c)},{passive:true});
+  function go(i){i=Math.max(0,Math.min(slides.length-1,i));lock=Date.now()+900;setCur(i);window.scrollTo({top:slides[i].offsetTop,behavior:'smooth'})}
   document.addEventListener('keydown',function(e){
     if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
     if(e.key==='Escape'){closeMenu();return}
