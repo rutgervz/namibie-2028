@@ -117,16 +117,45 @@ table.kosten{min-width:0}
 .rail a.on{background:var(--accent);transform:scale(1.35)}
 .rail a:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
 @media (max-width:760px){.rail{display:none}}
-.counter{position:fixed;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));font-family:var(--display);font-size:14px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 12px;z-index:5}
-.kbd{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));font-size:12px;color:var(--muted);z-index:5}
-@media (max-width:760px){.kbd{display:none}}
+.navbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px;z-index:6;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.navbar button{appearance:none;border:0;background:transparent;color:var(--fg);font:inherit;cursor:pointer;border-radius:999px;min-width:44px;height:40px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 14px}
+.navbar button:hover{background:var(--panel)}
+.navbar button:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+.navbar button:disabled{opacity:.35;cursor:default}
+.navbar .cnt{font-family:var(--display);font-size:15px;color:var(--fg);padding:0 12px;border-left:1px solid var(--line);border-right:1px solid var(--line);border-radius:0;min-width:120px}
+.navbar .cnt small{font-family:var(--body);font-size:11.5px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.navbar .cnt .ttl{display:none;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}
+@media (min-width:761px){.navbar .cnt .ttl{display:inline}}
+.navbar svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.menu{position:fixed;inset:0;z-index:7;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center}
+.menu[hidden]{display:none}
+.menu .sheet{width:min(100%,560px);max-height:min(78svh,720px);overflow:auto;background:var(--bg);border:1px solid var(--line);border-radius:16px 16px 0 0;padding:14px max(16px,env(safe-area-inset-left,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:761px){.menu{align-items:center}.menu .sheet{border-radius:16px}}
+.menu h3{font-size:20px;margin:4px 0 10px;display:flex;justify-content:space-between;align-items:center}
+.menu h3 button{appearance:none;border:1px solid var(--line);background:transparent;color:var(--fg);border-radius:999px;width:36px;height:36px;font:inherit;cursor:pointer}
+.menu ol{list-style:none;margin:0;padding:0;display:grid}
+.menu li button{appearance:none;width:100%;text-align:left;border:0;border-top:1px solid var(--line);background:transparent;color:var(--fg);font:inherit;font-size:15.5px;padding:11px 6px;cursor:pointer;display:grid;grid-template-columns:34px 1fr;gap:8px;align-items:baseline;border-radius:6px}
+.menu li button:hover{background:var(--panel)}
+.menu li button.on{color:var(--accent)}
+.menu li .no{font-family:var(--display);font-size:17px;color:var(--muted)}
+.menu li button.on .no{color:var(--accent)}
+.slide:last-child{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
 </style>
 
 </head>
 <body>
 <nav class="rail" id="rail" aria-label="Slides"></nav>
-<div class="counter" id="counter">1 / 18</div>
-<div class="kbd">↑ ↓ pijltjes</div>
+<nav class="navbar" aria-label="Slidenavigatie">
+  <button type="button" id="prev" aria-label="Vorige slide"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <button type="button" id="menubtn" class="cnt" aria-haspopup="dialog" aria-expanded="false"><span id="counter">1 / 18</span><span class="ttl" id="curtitle"></span></button>
+  <button type="button" id="next" aria-label="Volgende slide"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+</nav>
+<div class="menu" id="menu" hidden role="dialog" aria-label="Alle slides">
+  <div class="sheet">
+    <h3><span>Slides</span><button type="button" id="menuclose" aria-label="Sluiten">×</button></h3>
+    <ol id="menulist"></ol>
+  </div>
+</div>
 
 <main class="deck">
 
@@ -600,7 +629,18 @@ table.kosten{min-width:0}
   var rail=document.getElementById('rail'),counter=document.getElementById('counter');
   slides.forEach(function(s,i){var b=document.createElement('a');b.href='#'+s.id;b.setAttribute('aria-label','Slide '+(i+1));rail.appendChild(b)});
   var dots=rail.children,cur=0;
-  function setCur(i){cur=i;counter.textContent=(i+1)+' / '+slides.length;for(var k=0;k<dots.length;k++)dots[k].classList.toggle('on',k===i)}
+  var prev=document.getElementById('prev'),next=document.getElementById('next'),menu=document.getElementById('menu'),menubtn=document.getElementById('menubtn'),menulist=document.getElementById('menulist'),curtitle=document.getElementById('curtitle');
+  function titleOf(sl){var h=sl.querySelector('h1,h2');return h?h.textContent.replace(/\s+/g,' ').trim():sl.id}
+  slides.forEach(function(sl,i){var li=document.createElement('li'),b=document.createElement('button');b.type='button';b.innerHTML='<span class="no">'+(i+1)+'</span><span></span>';b.lastChild.textContent=titleOf(sl);b.addEventListener('click',function(){closeMenu();go(i)});li.appendChild(b);menulist.appendChild(li)});
+  var items=menulist.querySelectorAll('button');
+  function setCur(i){cur=i;counter.textContent=(i+1)+' / '+slides.length;curtitle.textContent=titleOf(slides[i]);prev.disabled=i===0;next.disabled=i===slides.length-1;for(var k=0;k<dots.length;k++)dots[k].classList.toggle('on',k===i);for(var m=0;m<items.length;m++)items[m].classList.toggle('on',m===i)}
+  function openMenu(){menu.hidden=false;menubtn.setAttribute('aria-expanded','true');var on=menulist.querySelector('.on');if(on)on.scrollIntoView({block:'center'})}
+  function closeMenu(){menu.hidden=true;menubtn.setAttribute('aria-expanded','false')}
+  prev.addEventListener('click',function(){go(cur-1)});
+  next.addEventListener('click',function(){go(cur+1)});
+  menubtn.addEventListener('click',function(){menu.hidden?openMenu():closeMenu()});
+  document.getElementById('menuclose').addEventListener('click',closeMenu);
+  menu.addEventListener('click',function(e){if(e.target===menu)closeMenu()});
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setCur(slides.indexOf(e.target))})},{threshold:.55});
     slides.forEach(function(s){io.observe(s)});
@@ -608,6 +648,8 @@ table.kosten{min-width:0}
   function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({block:'start'});setCur(i)}
   document.addEventListener('keydown',function(e){
     if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+    if(e.key==='Escape'){closeMenu();return}
+    if(!menu.hidden)return;
     if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(cur+1)}
     else if(e.key==='ArrowUp'||e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1)}
     else if(e.key==='Home'){go(0)}else if(e.key==='End'){go(slides.length-1)}
