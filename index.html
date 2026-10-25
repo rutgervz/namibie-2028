@@ -29,14 +29,13 @@
   color-scheme:light;
 }
 html{scroll-behavior:smooth}
-@media (min-width:761px) and (min-height:700px){html{scroll-snap-type:y proximity}}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.5;margin:0}
 *{box-sizing:border-box}
 h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;text-wrap:balance;margin:0}
 p{margin:0}
 a{color:var(--accent-2)}
-.slide{min-height:100svh;scroll-snap-align:start;display:flex;align-items:center;
+.slide{min-height:100svh;display:flex;align-items:center;
   padding-block:clamp(40px,7vh,88px);
   padding-left:max(16px,env(safe-area-inset-left,0px));
   padding-right:max(16px,env(safe-area-inset-right,0px));
